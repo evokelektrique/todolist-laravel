@@ -17,7 +17,7 @@ class TodoController extends Controller {
      * Display a listing of the resource.
      */
     public function index(): JsonResponse {
-        $todos = Todo::orderBy('id', 'desc')->paginate(10);
+        $todos = Todo::orderBy('id', 'desc')->paginate(5);
         return response()->json($todos);
     }
 
@@ -47,14 +47,21 @@ class TodoController extends Controller {
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Todo $todo) {
-        //
+    public function update(TodoRequest $todoRequest, Todo $todo) {
+        $update = $todo->update([
+            'content' => $todoRequest->content,
+            'complete' => $todoRequest->complete,
+        ]);
+
+        return response()->json($update);
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Todo $todo) {
-        //
+        $delete = $todo->delete();
+
+        return response()->json(['message' => 'successfully deleted', 'data' => ['todo' => $delete]]);
     }
 }
