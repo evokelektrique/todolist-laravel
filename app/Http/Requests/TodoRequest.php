@@ -19,7 +19,7 @@ class TodoRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            'content' => 'required,max:255',
+            'content' => 'required|max:255',
             'complete' => 'sometimes',
         ];
     }

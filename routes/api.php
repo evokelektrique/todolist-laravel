@@ -19,7 +19,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'todo', 'as' => 'todo.'], function () {
+Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'todo', 'as' => 'todo.'], function () {
     Route::get("list", [TodoController::class, 'index'])->name('index');
+    Route::get("/{todo}", [TodoController::class, 'show'])->name('show');
     Route::post("store", [TodoController::class, 'store'])->name('store');
+    Route::put("/{todo}", [TodoController::class, 'update'])->name('update');
 });

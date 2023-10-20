@@ -41,14 +41,14 @@ class TodoController extends Controller {
      * Display the specified resource.
      */
     public function show(Todo $todo) {
-        //
+        return response()->json($todo);
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(TodoRequest $todoRequest, Todo $todo) {
-        $update = $todo->update([
+        $update = tap($todo)->update([
             'content' => $todoRequest->content,
             'complete' => $todoRequest->complete,
         ]);
