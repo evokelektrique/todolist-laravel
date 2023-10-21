@@ -48,8 +48,7 @@ Content-Type: application/json
 Authorization: Bearer YOUR_API_TOKEN
 
 {
-    "title": "Buy groceries",
-    "description": "Milk, eggs, bread",
+    "content": "Buy groceries",
     "completed": false
 }
 ```
@@ -62,8 +61,7 @@ Content-Type: application/json
 Authorization: Bearer YOUR_API_TOKEN
 
 {
-    "title": "Buy groceries",
-    "description": "Milk, eggs, bread, and cheese",
+    "content": "Buy groceries",
     "completed": true
 }
 ```
