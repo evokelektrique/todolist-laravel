@@ -24,4 +24,5 @@ Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'todo', 'as' => 'tod
     Route::get("/{todo}", [TodoController::class, 'show'])->name('show');
     Route::post("store", [TodoController::class, 'store'])->name('store');
     Route::put("/{todo}", [TodoController::class, 'update'])->name('update');
+    Route::delete("/{todo}", [TodoController::class, 'destroy'])->name('destroy');
 });
